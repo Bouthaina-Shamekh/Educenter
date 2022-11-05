@@ -48,10 +48,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth','check_user')->group(f
 
 Auth::routes();
 
-Route::get('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');
-Route::post('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');
-Route::get('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
-Route::post('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::view('not_allowed', 'not_allowed');
 
@@ -69,15 +66,15 @@ Route::post('/contact', [SiteController::class, 'contact_data'])->name('contact_
 
 
 
-Route::get('/home',function(){
+  //Route::get('/home',function(){
 
-    if(Auth::check()){
-       if(Auth::user()->type =='admin'){
-            return view('admin.index');
+   // if(Auth::check()){
+       //if(Auth::user()->type =='admin'){
+          //  return view('admin.index');
 
-        }else{
+     //   }else{
 
-            return redirect()->route('site.index');
-       }
-    }
-});
+        //    return redirect()->route('site.index');
+      // }
+   // }
+//});
