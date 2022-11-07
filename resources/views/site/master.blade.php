@@ -112,7 +112,7 @@
               </ul>
             </li>
             <li class="nav-item @@contact">
-              <a class="nav-link" href="contact.html">CONTACT</a>
+              <a class="nav-link" href="{{ route('contact')}}">CONTACT</a>
             </li>
           </ul>
         </div>

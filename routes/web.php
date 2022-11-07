@@ -25,56 +25,63 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::prefix(LaravelLocalization::setLocale())->group(function(){
-Route::prefix('admin')->name('admin.')->middleware('auth','check_user')->group(function() {
-    Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::resource('categories', CategoryController::class);
-    Route::resource('courses', CourseController::class);
-    Route::resource('teachers',  TeacherController::class);
-    Route::resource('abouts',  AboutController::class);
-    Route::resource('events', EventController::class);
-    Route::resource('news',  NewController::class);
-    Route::get('users', [UserController::class, 'index'])->name('users.index');
-    Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-    Route::resource('roles', RoleController::class);
 
-});
 
-});
+
+
+
+
+
+//
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::view('not_allowed', 'not_allowed');
-
-
-
-
-
+Route::group(['middleware' => ['auth']], function(){
 Route::get('/',[SiteController::Class, 'index'])->name('site.index');
-Route::get('/about',[SiteController::Class, 'about'])->name('site.about');
+
+ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+ Route::get('/about',[SiteController::Class, 'about'])->name('site.about');
 Route::get('/course',[SiteController::Class, 'course'])->name('site.course');
 Route::get('/teacher',[SiteController::Class, 'teacher'])->name('site.teacher');
 Route::get('/event',[SiteController::Class, 'event'])->name('site.event');
 Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
 Route::post('/contact', [SiteController::class, 'contact_data'])->name('contact_data');
 
+});
 
 
-  //Route::get('/home',function(){
+Route::prefix(LaravelLocalization::setLocale())->group(function(){
+    Route::prefix('admin')->name('admin.')->middleware('auth','check_user')->group(function() {
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::resource('categories', CategoryController::class);
+        Route::resource('courses', CourseController::class);
+        Route::resource('teachers',  TeacherController::class);
+        Route::resource('abouts',  AboutController::class);
+        Route::resource('events', EventController::class);
+        Route::resource('news',  NewController::class);
+        Route::get('users', [UserController::class, 'index'])->name('users.index');
+        Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+        Route::resource('roles', RoleController::class);
+
+    });
+
+    });
+    Route::view('not_allowed', 'not_allowed');
+
+
+
+
+ // Route::get('/home',function(){
 
    // if(Auth::check()){
-       //if(Auth::user()->type =='admin'){
-          //  return view('admin.index');
+   //    if(Auth::user()->type =='admin'){
+       //    return view('admin.index');
 
-     //   }else{
+      //  }else{
 
-        //    return redirect()->route('site.index');
+      //      return redirect()->route('site.index');
       // }
    // }
 //});
