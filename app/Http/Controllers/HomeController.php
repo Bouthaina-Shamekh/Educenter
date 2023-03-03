@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Notifications\Notification;
 
 class HomeController extends Controller
 {
@@ -22,6 +25,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(){
+       // $users = Auth::user();
+        $users = User::first();
         $courses_slider = Course::orderByDesc('id')->take(3)->get();
         $abouts = About::orderByDesc('id')->take(1)->get();
         $courses = Course::orderByDesc('id')->take(6)->get();
@@ -29,7 +34,9 @@ class HomeController extends Controller
         $teachers = Teacher::orderByDesc('id')->take(3)->get();
         $news = News::orderByDesc('id')->take(3)->get();
 
-        return view('site.index', compact('courses_slider','abouts','courses','events','teachers','news'));
+
+
+        return view('site.index', compact('courses_slider','abouts','courses','events','teachers','news','users'));
     }
 
    // public function login()

@@ -21,6 +21,39 @@
     <link href="{{ asset('adminassest/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
     @yield('styles')
+
+    @if(app()->currentlocale() =='ar')
+    <style>
+        body{
+              direction: rtl;
+              text-align: right
+            }
+            .sidebar{
+
+                padding: 0;
+            }
+
+            .sidebar .nav-item .nav-link{
+                    text-align: right
+
+            }
+            .sidebar .nav-item .nav-link[data-toggle=collapse].collapsed::after {
+            transform: rotate(180deg);
+        }
+
+        .ml-auto, .mx-auto {
+            margin-right: auto!important;
+            margin-left: 0!important;
+        }
+
+        .dropdown-item {
+            text-align: right
+        }
+
+
+    </style>
+     @endif
+
 </head>
 
 <body id="page-top">
@@ -72,49 +105,43 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
+                                <span class="badge badge-danger badge-counter" id="notifications_count">
+                                    {{auth()->user()->unreadnotifications->count()}}
+                                </span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" id="unread"
                                 aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                <?php
+                                $users = App\Models\User::first();
+                                ?>
+                                @foreach ( $users->notifications as $notification )
+                           <a class="dropdown-item d-flex align-items-center" href="#">
+                            {{$notification->data['name_major'] }}
                                     <div class="mr-3">
                                         <div class="icon-circle bg-primary">
                                             <i class="fas fa-file-alt text-white"></i>
                                         </div>
                                     </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
+
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                @endforeach
                             </div>
+
+                         {{--   <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                @foreach (Auth::user()->unreadnotifications as $notification )
+                           <a class="dropdown-item d-flex align-items-center" href="#">
+                            {{$notification->data['title'] }}
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+
+                                </a>
+                                @endforeach
+                            </div> --}}
                         </li>
 
 
@@ -272,6 +299,45 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('adminassest/js/sb-admin-2.min.js') }}"></script>
+
+    <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('af4efbba3696b6789bbc', {
+      cluster: 'ap2'
+    });
+
+    var channel = pusher.subscribe('status-liked');
+    channel.bind('noyify', function(data) {
+    //  alert(JSON.stringify(data));
+      console.log(data);
+      $('#unread').prepend(`<a class="dropdown-item d-flex align-items-center" href="#">
+                `+data.name_major+`
+
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+
+                                </a>`);
+
+             var count = {{auth()->user()->unreadnotifications->count()}}
+             $('#notifications_count').text(count+1)
+
+    });
+  </script>
+
+  {{--  <script>
+        setInterval(function(){
+  $("#notifications_count").load(window.location.href + "#notifications_count");
+  $("#unread").load(window.location.href + " #unread");
+
+        });
+    </script> --}}
 
     @yield('scripts')
 </body>

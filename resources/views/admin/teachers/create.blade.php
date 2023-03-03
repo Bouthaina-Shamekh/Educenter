@@ -34,6 +34,16 @@
         <input type="text" name="major" placeholder="major" class="form-control" />
     </div>
 
+    <div class="mb-3">
+        <label>Category</label>
+        <select name="category_id" class="form-control">
+            <option value="">Select</option>
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name}}</option>
+            @endforeach
+        </select>
+    </div>
+
 
 
 

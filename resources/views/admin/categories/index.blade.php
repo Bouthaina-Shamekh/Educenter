@@ -6,6 +6,11 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">All Categories</h1>
 
+<div id="bou">
+
+
+</div>
+
 <table class="table table-bordered">
     <thead>
         <tr>

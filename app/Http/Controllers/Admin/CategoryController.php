@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+//use App\Event\Notification;
+use App\Models\User;
+use App\Models\Major;
 use App\Models\Teacher;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -9,6 +12,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
+use App\Events\Category1Notification;
+use App\Notifications\CategoryNotification;
+use Illuminate\Support\Facades\Notification;
+//use Illuminate\App\Notifications\Dispatch;
 
 
 class CategoryController extends Controller
@@ -20,11 +27,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $users=User::find(1);
+      // $users = User::where('id', '1')->first();
         Gate::authorize('all_categories');
         $categories = Category::orderByDesc('id')->paginate(5);
         //dd($categories->teacher);
 
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.index', compact('categories','users'));
     }
 
     /**
@@ -35,8 +44,9 @@ class CategoryController extends Controller
     public function create()
     {
                  //  ->WhereNull('parent_id')->get()ازا انحزف احد البيرنت لا تعرضه بالسليكت وتضاف للايديت
+        $users=User::find(1);
         $teachers = Teacher::all();
-        return view('admin.categories.create', compact('teachers'));
+        return view('admin.categories.create', compact('teachers','users'));
     }
 
     /**
@@ -47,6 +57,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $users = User::get();
          // Validate Data
          $request->validate([
             'name_major' => 'required',
@@ -75,6 +86,16 @@ class CategoryController extends Controller
             'parent_id' => $request->parent_id
 
         ]);
+           $name_major = Major::latest()->first(); //عشان نعرف اي تخصص انضاف ونضغط عليه نروحله
+
+          // Notification::Send($users, new CategoryNotification($request->name_major));
+          // Notification::dispatch('noyify updated by ' . Auth::user()->name);
+
+          foreach ($users as $client){
+
+            $client->notify(new CategoryNotification($request->name_major));
+        }
+        event(new Category1Notification($request->name_major));
 
         // Redirect
         return redirect()->route('admin.categories.index')->with('msg', 'Category created successfully')->with('type', 'success');

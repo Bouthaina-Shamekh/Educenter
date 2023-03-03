@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Teacher;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -19,9 +20,10 @@ class TeacherController extends Controller
      */
     public function index()
     {
+        $users=User::find(1);
         Gate::authorize('all_teachers');
         $teachers= Teacher::with('category')->orderByDesc('id')->paginate(5);
-        return view('admin.teachers.index', compact('teachers'));
+        return view('admin.teachers.index', compact('teachers','users'));
     }
 
     /**
@@ -31,9 +33,10 @@ class TeacherController extends Controller
      */
     public function create()
     {
+        $users=User::find(1);
         $teachers = Teacher::all();
         $categories = Category::select('id')->get();
-        return view('admin.teachers.create', compact('teachers','categories'));
+        return view('admin.teachers.create', compact('teachers','categories','users'));
     }
 
     /**

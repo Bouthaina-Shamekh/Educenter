@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use App\Events\Category1Notification;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\Admin\NewController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AdminController;
@@ -11,7 +13,6 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\RoleController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -39,13 +40,13 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function(){
-Route::get('/',[SiteController::Class, 'index'])->name('site.index');
+Route::get('/',[SiteController::class, 'index'])->name('site.index');
 
  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
- Route::get('/about',[SiteController::Class, 'about'])->name('site.about');
-Route::get('/course',[SiteController::Class, 'course'])->name('site.course');
-Route::get('/teacher',[SiteController::Class, 'teacher'])->name('site.teacher');
-Route::get('/event',[SiteController::Class, 'event'])->name('site.event');
+ Route::get('/about',[SiteController::class, 'about'])->name('site.about');
+Route::get('/course',[SiteController::class, 'course'])->name('site.course');
+Route::get('/teacher',[SiteController::class, 'teacher'])->name('site.teacher');
+Route::get('/event',[SiteController::class, 'event'])->name('site.event');
 Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
 Route::post('/contact', [SiteController::class, 'contact_data'])->name('contact_data');
 
@@ -68,12 +69,14 @@ Route::prefix(LaravelLocalization::setLocale())->group(function(){
     });
 
     });
+
+
     Route::view('not_allowed', 'not_allowed');
 
 
 
 
- // Route::get('/home',function(){
+   //Route::get('/home',function(){
 
    // if(Auth::check()){
    //    if(Auth::user()->type =='admin'){
@@ -85,3 +88,8 @@ Route::prefix(LaravelLocalization::setLocale())->group(function(){
       // }
    // }
 //});
+
+
+Route::get('/send',function(){
+    event(new Category1Notification('bouthaina'));
+});
