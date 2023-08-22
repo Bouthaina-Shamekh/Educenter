@@ -59,8 +59,8 @@
         <label>Teacher</label>
         <select name="teacher_id" class="form-control">
             <option value="">Select</option>
-            @foreach ($teacher as $item)
-                <option @selected($course->teacher_name== $item->id) value="{{ $item->id }}"></option>
+            @foreach ($teachers as $teacher)
+                <option  value="{{ $teacher->id }}" {{$course->teacher_id == $teacher->id ? 'selected' : ''}}>{{$teacher->name}}</option>
             @endforeach
         </select>
     </div>

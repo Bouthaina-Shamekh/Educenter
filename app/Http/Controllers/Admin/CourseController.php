@@ -94,9 +94,9 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        $teachers = Teacher::select('id')->get();
-        $courses = Courses::all();
-        $course = Courses::findOrFail($id);
+        $teachers = Teacher::all();
+        $courses = Course::all();
+        $course = Course::findOrFail($id);
         return view('admin.courses.edit', compact('courses', 'course','teachers'));
     }
 
@@ -120,7 +120,7 @@ class CourseController extends Controller
 
         $courses = Course::findOrFail($id);
 
-        $img_name = $course->image;
+        $img_name = $courses->image;
         if($request->hasFile('image')) {
            $img_name = rand() . time() . $request->file('image')->getClientOriginalName();
           $request->file('image')->move(public_path('uploads/courses'), $img_name);

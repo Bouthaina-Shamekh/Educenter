@@ -37,7 +37,7 @@
     </div>
 
 
-    <div class="mb-3">
+    {{-- <div class="mb-3">
         <label>Teacher</label>
         <select name="parent_id" class="form-control">
             <option value="">Select</option>
@@ -45,7 +45,7 @@
                 <option value="{{ $teacher->id }}">{{ $teacher->name}}</option>
             @endforeach
         </select>
-    </div>
+    </div> --}}
 
     <button class="btn btn-success px-5">Add</button>
 

@@ -13,7 +13,7 @@
                 <th>Image</th>
                 <th>Name</th>
                 <th>Major</th>
-                <th>Category_id</th>
+                <th>Category Name</th>
                 {{-- <th>Created At</th> --}}
                 <th>Actions</th>
             </tr>
@@ -26,7 +26,7 @@
                     <td><img width="80" src="{{ asset('uploads/teachers/' . $teacher->image) }}" alt=""></td>
                     <td>{{ $teacher->name }}</td>
                     <td>{{ $teacher->major }}</td>
-                    <td>{{ $teacher->category_id }}</td>
+                    <td>{{ $teacher->category->name_major }}</td>
 
 
                     <td>

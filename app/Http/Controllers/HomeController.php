@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use App\Models\User;
+use App\Models\About;
+use App\Models\Event;
+use App\Models\Course;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notification;

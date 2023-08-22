@@ -100,10 +100,31 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // public function destroy($id)
+    // {
+    //     $roles = Role::findOrFail($id);
+    //     $roles->delete();
+    //     return view('admin.roles.index', compact('roles'));
+    // }
+
     public function destroy($id)
-    {
-        //
+{
+    $role = Role::find($id);
+
+    if (!$role) {
+        return redirect()->route('admin.roles.index')->with([
+            'type' => 'danger',
+            'msg' => 'Role not found.'
+        ]);
     }
+
+    $role->delete();
+
+    return redirect()->route('admin.roles.index')->with([
+        'type' => 'success',
+        'msg' => 'Role deleted successfully.'
+    ]);
+}
 
     /**
      * Display a trashed listing of the resource.

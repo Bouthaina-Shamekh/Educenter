@@ -15,3 +15,14 @@
     </div>
   </div>
 
+  {{-- <div class="card">
+    <img class="card-img-top" src="{{ asset('uploads/courses/' . $item->image) }}" alt="Card image cap">
+    <div class="card-body">
+      <h4 class="card-title">{{ $item->title }}</h4>
+      <p class="card-text">
+        {{ $item->description }}
+      </p>
+      <a href="{{ route('site.course')}}" class="btn btn-success">Go somewhere</a>
+    </div>
+  </div> --}}
+

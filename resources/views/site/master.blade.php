@@ -126,7 +126,7 @@
 
 
 
- {{--<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
+ <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content rounded-0 border-0 p-4">
             <div class="modal-header border-0">
@@ -161,14 +161,14 @@
             </div>
         </div>
     </div>
-</div>  --}}
+</div>
 
 
 
 
 
 <!-- Modal -->
-{{--<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content rounded-0 border-0 p-4">
             <div class="modal-header border-0">
@@ -195,9 +195,9 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 
-@yield('content')
+ @yield('content')
 
 <!-- footer -->
 <footer>
@@ -300,7 +300,7 @@
 </footer>
 <!-- /footer -->
 
-<!-- jQuery -->
+ <!-- jQuery -->
 <script src="{{ asset('frontend/plugins/jQuery/jquery.min.js')}}"></script>
 <!-- Bootstrap JS -->
 <script src="{{ asset('frontend/plugins/bootstrap/bootstrap.min.js')}}"></script>
@@ -321,3 +321,14 @@
 @yield('scripts')
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

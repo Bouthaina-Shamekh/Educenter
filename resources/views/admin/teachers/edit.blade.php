@@ -39,13 +39,13 @@
 
 
     <div class="mb-3">
-        <label>Category_id</label>
+        <label>Category Name</label>
         <select name="category_id" class="form-control">
             <option value="">Select</option>
 
 
-            @foreach ($categories as $item)
-                <option {{ $teacher->category_id == $item->id ? 'selected' : '' }} value="{{ $item->id }}"></option>
+            @foreach ($categories as $categorie)
+                <option {{ $teacher->category_id == $categorie->id ? 'selected' : '' }} value="{{ $categorie->id }}">{{$categorie->name_major}}</option>
             @endforeach
         </select>
     </div>

@@ -1,6 +1,6 @@
-@extends('site.master')
+ @extends('site.master')
 
-{{--@section('title', 'Home|' . env('APP_NAME')--}}
+@section('title', 'Home|' . env('APP_NAME'))
 
 @section('content')
 <!-- hero slider -->
@@ -77,7 +77,7 @@
 <!-- /banner-feature -->
 
 <!-- about us -->
-<section class="section">
+ <section class="section">
     <div class="container">
       <div class="row align-items-center">
         @foreach ( $abouts as $item)
@@ -98,7 +98,7 @@
 <!-- /about us -->
 
 <!-- courses -->
-<section class="section-sm">
+ <section class="section-sm">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -140,7 +140,7 @@
 <!-- /courses -->
 
 <!-- cta -->
-<section class="section bg-primary">
+ <section class="section bg-primary">
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
@@ -154,11 +154,11 @@
 <!-- /cta -->
 
 <!-- success story -->
-@include('includes.sucessstory')
+ @include('includes.sucessstory')
 <!-- /success story -->
 
 <!-- events -->
-<section class="section bg-gray">
+ <section class="section bg-gray">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -176,7 +176,7 @@
   @foreach ($events as $item)
 
 
-  <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+   <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
    @include('includes.event')
   </div>
   @endforeach
@@ -184,7 +184,7 @@
 
   <!-- event -->
 
-</div>
+ </div>
     <!-- mobile see all button -->
     <div class="row">
       <div class="col-12 text-center">
@@ -206,7 +206,7 @@
       @foreach ( $teachers as $item )
 
 
-      <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+       <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
         @include('includes.teacher')
         </div>
       </div>
@@ -215,13 +215,13 @@
 
       <!-- teacher -->
 
-    </div>
+     </div>
   </div>
 </section>
 <!-- /teachers -->
 
 <!-- blog -->
-<section class="section pt-0">
+ <section class="section pt-0">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -239,9 +239,13 @@
 
   <!-- blog post -->
 
-</div>
+ </div>
   </div>
 </section>
 <!-- /blog -->
 
 @stop
+
+
+
+

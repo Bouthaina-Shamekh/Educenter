@@ -14,7 +14,7 @@
 
 @section('content')
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Add new Category</h1>
+<h1 class="h3 mb-4 text-gray-800">Add new Role</h1>
 @include('admin.errors')
 <form action="{{ route('admin.roles.store') }}" method="POST">
     @csrf

@@ -35,7 +35,7 @@ class TeacherController extends Controller
     {
         $users=User::find(1);
         $teachers = Teacher::all();
-        $categories = Category::select('id')->get();
+        $categories = Category::all();
         return view('admin.teachers.create', compact('teachers','categories','users'));
     }
 
@@ -91,7 +91,7 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::select('id')->get();
+        $categories = Category::all();
         $teachers = Teacher::all();
         $teacher = Teacher::findOrFail($id);
         return view('admin.teachers.edit', compact('teachers', 'teacher','categories'));
