@@ -28,6 +28,6 @@ class Teacher extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class, 'category_id')->withDefault();
+        return $this->belongsTo(Category::class, 'categorie_id')->withDefault();
     }
 }

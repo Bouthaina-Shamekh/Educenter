@@ -13,6 +13,6 @@ class Role extends Model
 
      public function abilities()
     {
-        return $this->belongsToMany(Ability::class);
+        return $this->belongsToMany(Ability::class , 'ability_role','role_id','ability_id');
     }
 }

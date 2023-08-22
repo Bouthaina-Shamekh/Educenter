@@ -18,7 +18,7 @@ class CreateTeachersTable extends Migration
             $table->string('image');
             $table->string('name');
             $table->string('major');
-            $table->foreignId('category_id');
+            $table->foreignId('categorie_id')->references('id')->on('categories');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -12,7 +12,7 @@ class Category extends Model
 {
     use HasFactory,softDeletes;
      //protected $guarded = [];
-     protected $fillable = ['name_major', 'image','title','description','parent_id'];
+     protected $fillable = ['name_major', 'image','title','description'];
 
      public function parent()
     {
@@ -24,8 +24,8 @@ class Category extends Model
        return $this->hasMany(Category::class, 'parent_id');
     }
 
-    public function teacher()
-    {
-       return $this->belongsTo(Teacher::class);
-    }
+    // public function teacher()
+    // {
+    //    return $this->belongsTo(Teacher::class);
+    // }
 }

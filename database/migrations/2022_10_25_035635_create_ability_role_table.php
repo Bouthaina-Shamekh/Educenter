@@ -14,8 +14,8 @@ class CreateAbilityRoleTable extends Migration
     public function up()
     {
         Schema::create('ability_role', function (Blueprint $table) {
-            $table->foreignId('ability_id');
-            $table->foreignId('role_id');
+            $table->foreignId('ability_id')->references('id')->on('abilities');
+            $table->foreignId('role_id')->references('id')->on('roles');
             $table->primary(['ability_id', 'role_id']);
         });
     }

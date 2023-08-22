@@ -45,7 +45,7 @@
 
 
             @foreach ($categories as $categorie)
-                <option {{ $teacher->category_id == $categorie->id ? 'selected' : '' }} value="{{ $categorie->id }}">{{$categorie->name_major}}</option>
+                <option {{ $teacher->categorie_id == $categorie->id ? 'selected' : '' }} value="{{ $categorie->id }}">{{$categorie->name_major}}</option>
             @endforeach
         </select>
     </div>

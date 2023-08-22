@@ -19,7 +19,6 @@ class CreateCategoriesTable extends Migration
             $table->string('image');
             $table->string('title');
             $table->string('description');
-            $table->foreignId('teacher_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

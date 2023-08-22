@@ -62,7 +62,7 @@ class TeacherController extends Controller
         'image' => $img_name,
         'name' => $request->name,
         'major' => $request->major,
-        'category_id' => $request->category_id
+        'categorie_id' => $request->category_id
 
     ]);
 
@@ -125,7 +125,7 @@ class TeacherController extends Controller
         'image' => $img_name,
         'name' => $request->name,
         'major' => $request->major,
-        'category_id' => $request->category_id
+        'categorie_id' => $request->category_id
 
     ]);
 

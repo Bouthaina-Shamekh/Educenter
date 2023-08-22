@@ -64,7 +64,7 @@ class CategoryController extends Controller
             'image' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'parent_id' => 'nullable|exists:categories,id',
+
         ]);
 
 
@@ -83,7 +83,7 @@ class CategoryController extends Controller
            'image' => $img_name,
             'title' => $request->title,
            'description' => $request->description,
-            'parent_id' => $request->parent_id
+
 
         ]);
            $name_major = Major::latest()->first(); //عشان نعرف اي تخصص انضاف ونضغط عليه نروحله
@@ -161,7 +161,7 @@ class CategoryController extends Controller
            'image' => $img_name,
             'title' => $request->title,
            'description' => $request->description,
-            'parent_id' => $request->parent_id
+           
 
         ]);
 

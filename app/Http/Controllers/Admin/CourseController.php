@@ -21,8 +21,9 @@ class CourseController extends Controller
     public function index()
     {
         Gate::authorize('all_courses');
-        $courses = Course::orderByDesc('id')->paginate(5);
-        return view('admin.courses.index',compact('courses'));
+        $courses = Course::with('teacher')->orderByDesc('id')->paginate(5);
+        $teacher = Teacher::all();
+        return view('admin.courses.index',compact('courses','teacher'));
     }
 
     /**
@@ -153,6 +154,6 @@ class CourseController extends Controller
         $course = Course::findOrFail($id);
         File::delete(public_path('uploads/courses/'.$course->image));
         $course->delete();
-        return redirect()->route('admin.courses.index')->with('msg', 'Course deleted successfully')->with('type', 'danger');
+        return redirect()->back()->with('msg', 'Course deleted successfully')->with('type', 'danger');
     }
 }
