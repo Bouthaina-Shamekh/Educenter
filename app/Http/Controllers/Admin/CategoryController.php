@@ -140,7 +140,7 @@ class CategoryController extends Controller
            // 'image' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'parent_id' => 'nullable|exists:categories,id',
+            // 'parent_id' => 'nullable|exists:categories,id',
         ]);
 
         $category = Category::findOrFail($id);
@@ -161,7 +161,7 @@ class CategoryController extends Controller
            'image' => $img_name,
             'title' => $request->title,
            'description' => $request->description,
-           
+
 
         ]);
 
@@ -183,7 +183,7 @@ class CategoryController extends Controller
 
         File::delete(public_path('uploads/categories/'.$category->image));
 
-        $category->children()->update(['parent_id' => null]);
+        // $category->children()->update(['parent_id' => null]);
 
         $category->delete();
 

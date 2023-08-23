@@ -41,6 +41,25 @@
         </div>
     </li>
 
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTeacher"
+            aria-expanded="true" aria-controls="collapseTeacher">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>{{__('admin.teacher')}}</span>
+        </a>
+        <div id="collapseTeacher" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+
+                <a class="collapse-item" href="{{ route('admin.teachers.index')}}">All Teacher </a>
+                <a class="collapse-item" href="{{ route('admin.teachers.create')}}">Add New</a>
+            </div>
+        </div>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
@@ -60,7 +79,7 @@
         </div>
     </li>
 
-     <!-- Divider -->
+     {{-- <!-- Divider -->
      <hr class="sidebar-divider d-none d-md-block">
 
 
@@ -77,7 +96,7 @@
                 <a class="collapse-item" href="{{ route('admin.teachers.create')}}">Add New</a>
             </div>
         </div>
-    </li>
+    </li> --}}
 
      <!-- Divider -->
      <hr class="sidebar-divider d-none d-md-block">
@@ -171,7 +190,7 @@
             <span>{{__('admin.user')}}</span></a>
     </li>
 
-   
+
 
 
 

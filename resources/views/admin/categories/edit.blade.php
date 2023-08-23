@@ -40,17 +40,17 @@
     </div>
 
 
-    <div class="mb-3">
+    {{-- <div class="mb-3">
         <label>Parent</label>
         <select name="parent_id" class="form-control">
             <option value="">Ss</option>
 
             {{--هلقيت انا عارضة بالصفحة كاتوجري بعتاهم من الاندكس ,,,وبدي اعدل عليها ف بغير الاسم بلوب عشان م يسير تضارب بين المبعوتة  والمراد تغغيرها--}}
-            @foreach ($categories as $item)
+            {{-- @foreach ($categories as $item)
                 <option {{ $category->parent_id == $item->id ? 'selected' : '' }} value="{{ $item->id }}"></option>
             @endforeach
         </select>
-    </div>
+    </div>  --}}
 
 
 

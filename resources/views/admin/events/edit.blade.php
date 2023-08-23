@@ -26,7 +26,7 @@
 
     <div class="mb-3">
         <label>Location</label>
-        <input type="text" name="location" placeholder="location" class="form-control" value="{{ $event->title }}" />
+        <input type="text" name="location" placeholder="location" class="form-control" value="{{ $event->location}}" />
     </div>
 
     <div class="mb-3">

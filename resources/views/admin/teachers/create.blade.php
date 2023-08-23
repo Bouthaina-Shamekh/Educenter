@@ -24,7 +24,7 @@
 
 
     <div class="mb-3">
-        <label> Name</label>
+        <label> Name </label>
         <input type="text" name="name" placeholder="Name" class="form-control" />
     </div>
 

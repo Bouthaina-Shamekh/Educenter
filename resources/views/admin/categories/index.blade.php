@@ -19,7 +19,7 @@
             <th>Image</th>
             <th>Title</th>
             <th>Description</th>
-            <th>Parent</th>
+            {{-- <th>Parent</th> --}}
           {{-- <th>Created At</th>--}}
             <th>Actions</th>
         </tr>
@@ -34,7 +34,7 @@
             <td><img width="80" src="{{ asset('uploads/categories/'.$category->image) }}" alt=""></td>
             <td>{{ $category->title}}</td>
             <td>{{ $category->description}}</td>
-            <td>{{ $category->teacher}}</td>
+            {{-- <td>{{ $category->teacher}}</td> --}}
             {{--<td>{{ $category->created_at ? $category->created_at->diffForHumans() : '' }}</td>--}}
             <td>
                 <a class="btn btn-sm btn-primary" href="{{ route('admin.categories.edit', $category->id) }}"><i class="fas fa-edit"></i></a>

@@ -1,10 +1,10 @@
 @extends('admin.master')
 
-@section('title', 'Abouts | ' . env('APP_NAME'))
+@section('title', 'Events | ' . env('APP_NAME'))
 
 @section('content')
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">All About</h1>
+<h1 class="h3 mb-4 text-gray-800">All Event</h1>
 
 <table class="table table-bordered">
     <thead>
