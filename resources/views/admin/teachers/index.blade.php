@@ -6,6 +6,12 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">All Teacher</h1>
 
+    @if (session('msg'))
+    <div class="alert alert-{{ session('type') }}">
+        {{ session('msg') }}
+    </div>
+@endif
+
     <table class="table table-bordered">
         <thead>
             <tr>

@@ -7,6 +7,7 @@ use App\Models\Teacher;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
@@ -143,12 +144,17 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
+        $courses = Course::where('teacher_id',$id)->first();
+        if($courses)
+        {
+            return redirect()->back()->with('msg', 'Teacher Cant Delete Because Find In Courses')->with('type', 'danger');
+        }
         $teacher = Teacher::findOrFail($id);
 
         File::delete(public_path('uploads/teachers/'.$teacher->image));
 
         $teacher->delete();
 
-        return redirect()->route('admin.teachers.index')->with('msg', 'Teacher deleted successfully')->with('type', 'danger');
+        return redirect()->route('admin.teachers.index')->with('msg', 'Teacher deleted successfully')->with('type', 'success');
     }
 }

@@ -11,6 +11,12 @@
 
 </div>
 
+@if (session('msg'))
+<div class="alert alert-{{ session('type') }}">
+    {{ session('msg') }}
+</div>
+@endif
+
 <table class="table table-bordered">
     <thead>
         <tr>

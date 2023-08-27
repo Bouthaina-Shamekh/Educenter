@@ -31,8 +31,8 @@
             <td>{{ $course->description}}</td>
             <td>{{ $course->btn_text}}</td>
             <td>{{ $course->btn_link}}</td>
-          {{--  <td>{{ $course->registration_id}}</td> --}}
-            <td>{{ $course->teacher->name}}</td>
+
+            <td>{{$course->teacher->name}}</td>
             <td>
                 <a class="btn btn-sm btn-primary" href="{{ route('admin.courses.edit', $course->id) }}"><i class="fas fa-edit"></i></a>
                 <form class="d-inline" action="{{ route('admin.courses.destroy', $course->id) }}" method="POST">

@@ -137,10 +137,9 @@ class CategoryController extends Controller
         // Validate Data
         $request->validate([
             'name_major' => 'required',
-           // 'image' => 'required',
             'title' => 'required',
             'description' => 'required',
-            // 'parent_id' => 'nullable|exists:categories,id',
+            
         ]);
 
         $category = Category::findOrFail($id);
@@ -178,15 +177,19 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        $teachers = Teacher::where('categorie_id',$id)->first();
+        if($teachers)
+        {
+            return redirect()->back()->with('msg', 'Category Cant Deleted Because Teacher Use This Category')->with('type', 'danger');
+        }
 
         $category = Category::findOrFail($id);
 
         File::delete(public_path('uploads/categories/'.$category->image));
 
-        // $category->children()->update(['parent_id' => null]);
 
         $category->delete();
 
-        return redirect()->route('admin.categories.index')->with('msg', 'Category deleted successfully')->with('type', 'danger');
+        return redirect()->route('admin.categories.index')->with('msg', 'Category deleted successfully')->with('type', 'success');
     }
 }

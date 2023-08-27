@@ -10,7 +10,7 @@
           <h4 class="card-title">{{ $item->title }}</h4>
         </a>
         <p class="card-text mb-4"> {{ $item->description }} </p>
-        <a href="course-single.html" class="btn btn-primary btn-sm">{{ $item->btn_text}}</a>
+        <a href="{{ route('site.course')}}" class="btn btn-primary btn-sm">{{ $item->btn_text}}</a>
       </div>
     </div>
   </div>
