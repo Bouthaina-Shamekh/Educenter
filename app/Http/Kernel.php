@@ -2,7 +2,9 @@
 
 namespace App\Http;
 //use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\CheckPassord;
 use App\Http\Middleware\CheckUserType;
+use App\Http\Middleware\ChangeLanguage;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -70,8 +72,12 @@ class Kernel extends HttpKernel
         'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
 
-      'check_user'          => CheckUserType::class,
+      'check_user'=> CheckUserType::class,
 
         // 'user_type' => \App\Http\Middleware\CheckUser::class
+
+        'CheckPassord' => CheckPassord::class,
+        'ChangeLanguage' => ChangeLanguage::class,
+        'CheckAdminToken'=> CheckAdminToken::class,
     ];
 }
